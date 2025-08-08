@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, Mail, Phone, MapPin, Star, Users, Globe, GraduationCap, FileText, Award, Calendar, Clock, CheckCircle, Heart, Quote } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 
 export default function Home() {
   const [likes, setLikes] = useState(3108);
@@ -163,126 +164,133 @@ const handleSubmit = async (e) => {
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="pt-20 min-h-screen flex items-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100"></div>
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3')] bg-cover bg-center opacity-10"></div>
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
-                  ChinaEduLink Agency:
-                  <span className="block text-blue-600">Advancing Global Talent</span>
-                </h1>
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  A prestigious scholarship program supporting academic excellence and leadership potential in Huaian, Jiangsu, China.
-                </p>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-  <div className="flex items-center space-x-3">
-    <Mail className="h-5 w-5 text-blue-600" />
-    <a
-      href="mailto:china.edulinkagency@gmail.com"
-      className="text-gray-700 hover:text-blue-600"
-      title="china.edulinkagency@gmail.com"
-    >
-      Email Us
-    </a>
-  </div>
-  <div className="flex items-center space-x-3">
-    <Phone className="h-5 w-5 text-green-600" />
-    <a href="tel:+8618662953550" className="text-gray-700 hover:text-green-600">
-      Call Us
-    </a>
-  </div>
-  <div className="flex items-center space-x-3">
-    <img
-      src="https://cdn-icons-png.flaticon.com/128/733/733585.png"
-      alt="WhatsApp"
-      className="h-5 w-5"
-    />
-    <a
-      href="https://wa.me/8618662953550"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-gray-700 hover:text-green-500"
-    >
-      WhatsApp
-    </a>
-  </div>
-  <div className="flex items-center space-x-3">
-    <img
-      src="https://telegram.org/img/t_logo.png"
-      alt="Telegram"
-      className="h-5 w-5"
-    />
-    <a
-      href="https://t.me/ChinaEduLinkAgency"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-gray-700 hover:text-blue-500"
-    >
-      Telegram
-    </a>
-  </div>
-</div>
-            </div>
+<section
+  id="home"
+  className="pt-20 min-h-screen flex items-center relative overflow-hidden"
+>
+  {/* Background */}
+  <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100"></div>
+  <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3')] bg-cover bg-center opacity-10"></div>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-6">
-              <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-white/50 shadow-lg">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-                    <Star className="h-6 w-6 text-green-600" />
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-gray-900">95%</div>
-                    <div className="text-sm text-gray-600">Success Rate</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-white/50 shadow-lg">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-                    <Users className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-gray-900">1,200+</div>
-                    <div className="text-sm text-gray-600">Scholars</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-white/50 shadow-lg">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
-                    <Globe className="h-6 w-6 text-purple-600" />
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-gray-900">10+</div>
-                    <div className="text-sm text-gray-600">Provinces</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-white/50 shadow-lg">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
-                    <GraduationCap className="h-6 w-6 text-orange-600" />
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-gray-900">25+</div>
-                    <div className="text-sm text-gray-600">Universities</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center max-w-4xl mx-auto">
+      <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+        ChinaEduLink Agency:
+        <span className="block text-blue-600">Advancing Global Talent</span>
+      </h1>
+      <p className="text-xl md:text-2xl text-gray-600 mb-10">
+        A prestigious scholarship program supporting academic excellence and leadership potential in Huaian, Jiangsu, China.
+      </p>
+
+      {/* Apply Now & Learn More */}
+      <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+        <button
+          onClick={() => scrollToSection('contact')}
+          className="bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+        >
+          Apply Now
+        </button>
+        <button
+          onClick={() => scrollToSection('details')}
+          className="border border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-colors"
+        >
+          Learn More
+        </button>
+      </div>
+
+      {/* Contact Icons */}
+      <div className="flex flex-wrap justify-center gap-8 mt-8 text-gray-700">
+        {/* Email */}
+        <a
+          href="mailto:china.edulinkagency@gmail.com"
+          className="flex items-center space-x-2 hover:text-blue-600 transition-colors"
+        >
+          <Mail className="h-6 w-6" />
+          <span>Email</span>
+        </a>
+
+        {/* Call */}
+        <a
+          href="tel:+8618662953550"
+          className="flex items-center space-x-2 hover:text-green-600 transition-colors"
+        >
+          <Phone className="h-6 w-6" />
+          <span>Call</span>
+        </a>
+
+        {/* WhatsApp */}
+        <a
+          href="https://wa.me/8618662953550"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center space-x-2 hover:text-green-500 transition-colors"
+        >
+          <FaWhatsapp className="h-6 w-6" />
+          <span>WhatsApp</span>
+        </a>
+
+        {/* Telegram */}
+        <a
+          href="https://t.me/ChinaEduLinkAgency"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center space-x-2 hover:text-blue-500 transition-colors"
+        >
+          <FaTelegramPlane className="h-6 w-6" />
+          <span>Telegram</span>
+        </a>
+      </div>
+    </div>
+
+    {/* Stats Grid */}
+    <div className="grid grid-cols-2 gap-6 mt-20">
+      <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-white/50 shadow-lg">
+        <div className="flex items-center space-x-3">
+          <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+            <Star className="h-6 w-6 text-green-600" />
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-gray-900">95%</div>
+            <div className="text-sm text-gray-600">Success Rate</div>
           </div>
         </div>
-      </section>
+      </div>
+      <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-white/50 shadow-lg">
+        <div className="flex items-center space-x-3">
+          <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+            <Users className="h-6 w-6 text-blue-600" />
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-gray-900">1,200+</div>
+            <div className="text-sm text-gray-600">Scholars</div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-white/50 shadow-lg">
+        <div className="flex items-center space-x-3">
+          <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+            <Globe className="h-6 w-6 text-purple-600" />
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-gray-900">10+</div>
+            <div className="text-sm text-gray-600">Provinces</div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-white/50 shadow-lg">
+        <div className="flex items-center space-x-3">
+          <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
+            <Award className="h-6 w-6 text-orange-600" />
+          </div>
+          <div>
+            <div className="text-2xl font-bold text-gray-900">15+</div>
+            <div className="text-sm text-gray-600">Partner Universities</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Scholarship Details Section */}
       <section id="details" className="py-24 bg-white">
