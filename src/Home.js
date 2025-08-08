@@ -509,13 +509,18 @@ const handleSubmit = async (e) => {
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
               <div className="p-12">
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
-                  <div className="w-32 h-32 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-3xl font-bold text-white">乃ㄖㄥ卂</span>
-                  </div>
+                  <div className="w-32 h-32 rounded-full overflow-hidden flex-shrink-0 shadow-lg">
+  <img
+    src="/profile.jpg"
+    alt="Profile"
+    className="w-full h-full object-cover"
+  />
+</div>
+
                   
                   <div className="flex-1 space-y-6 text-center md:text-left">
                     <div>
-                      <h3 className="text-3xl font-bold text-gray-900">乃ㄖㄥ卂</h3>
+                      <h3 className="text-3xl font-bold text-gray-900">Balogun Abdullahi</h3>
                       <p className="text-xl text-blue-600 font-semibold">Program Director & Founder</p>
                       <div className="flex items-center justify-center md:justify-start space-x-2 mt-2">
                         <MapPin className="h-5 w-5 text-gray-500" />
