@@ -181,19 +181,53 @@ const handleSubmit = async (e) => {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <button 
-                  onClick={() => scrollToSection('contact')}
-                  className="bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
-                >
-                  Apply Now
-                </button>
-                <button 
-                  onClick={() => scrollToSection('details')}
-                  className="border border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-colors"
-                >
-                  Learn More
-                </button>
-              </div>
+  <div className="flex items-center space-x-3">
+    <Mail className="h-5 w-5 text-blue-600" />
+    <a
+      href="mailto:china.edulinkagency@gmail.com"
+      className="text-gray-700 hover:text-blue-600"
+      title="china.edulinkagency@gmail.com"
+    >
+      Email Us
+    </a>
+  </div>
+  <div className="flex items-center space-x-3">
+    <Phone className="h-5 w-5 text-green-600" />
+    <a href="tel:+8618662953550" className="text-gray-700 hover:text-green-600">
+      Call Us
+    </a>
+  </div>
+  <div className="flex items-center space-x-3">
+    <img
+      src="https://cdn-icons-png.flaticon.com/128/733/733585.png"
+      alt="WhatsApp"
+      className="h-5 w-5"
+    />
+    <a
+      href="https://wa.me/8618662953550"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-gray-700 hover:text-green-500"
+    >
+      WhatsApp
+    </a>
+  </div>
+  <div className="flex items-center space-x-3">
+    <img
+      src="https://telegram.org/img/t_logo.png"
+      alt="Telegram"
+      className="h-5 w-5"
+    />
+    <a
+      href="https://t.me/ChinaEduLinkAgency"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-gray-700 hover:text-blue-500"
+    >
+      Telegram
+    </a>
+  </div>
+</div>
             </div>
 
             {/* Stats Grid */}
@@ -539,23 +573,70 @@ const handleSubmit = async (e) => {
                     </div>
 
                     <div className="space-y-4">
-                      <p className="text-gray-700 leading-relaxed">
-                        As the founder and administrator of ChinaEduLink Agency, I am committed to transparency, 
-                        academic excellence, and fostering international educational cooperation. With over 15 years 
-                        of experience in international education, I have dedicated my career to bridging cultural 
-                        and academic gaps between nations.
-                      </p>
-                      
-                      <div className="flex flex-col sm:flex-row gap-4">
-                        <div className="flex items-center space-x-3">
-                          <Mail className="h-5 w-5 text-blue-600" />
-                          <a href="mailto:china.edulinkagency@gmail.com" className="text-gray-700 hover:text-blue-600">china.edulinkagency@gmail.com</a>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <Phone className="h-5 w-5 text-green-600" />
-                          <a href="tel:+8618662953550" className="text-gray-700 hover:text-green-600">+86 186 62 953550</a>
-                        </div>
-                      </div>
+  <p className="text-gray-700 leading-relaxed">
+    As the founder and administrator of ChinaEduLink Agency, I am committed to transparency, 
+    academic excellence, and fostering international educational cooperation. With over 15 years 
+    of experience in international education, I have dedicated my career to bridging cultural 
+    and academic gaps between nations.
+  </p>
+
+  <div className="space-y-4">
+  <p className="text-gray-700 leading-relaxed">
+    As the founder and administrator of ChinaEduLink Agency, I am committed to transparency, 
+    academic excellence, and fostering international educational cooperation. With over 15 years 
+    of experience in international education, I have dedicated my career to bridging cultural 
+    and academic gaps between nations.
+  </p>
+
+ <div className="flex flex-col sm:flex-row gap-4">
+  <div className="flex items-center space-x-3">
+    <Mail className="h-5 w-5 text-blue-600" />
+    <a
+      href="mailto:china.edulinkagency@gmail.com"
+      className="text-gray-700 hover:text-blue-600"
+      title="china.edulinkagency@gmail.com"
+    >
+      Email Us
+    </a>
+  </div>
+  <div className="flex items-center space-x-3">
+    <Phone className="h-5 w-5 text-green-600" />
+    <a href="tel:+8618662953550" className="text-gray-700 hover:text-green-600">
+      Call Us
+    </a>
+  </div>
+  <div className="flex items-center space-x-3">
+    <img
+      src="https://cdn-icons-png.flaticon.com/128/733/733585.png"
+      alt="WhatsApp"
+      className="h-5 w-5"
+    />
+    <a
+      href="https://wa.me/8618662953550"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-gray-700 hover:text-green-500"
+    >
+      WhatsApp
+    </a>
+  </div>
+  <div className="flex items-center space-x-3">
+    <img
+      src="https://telegram.org/img/t_logo.png"
+      alt="Telegram"
+      className="h-5 w-5"
+    />
+    <a
+      href="https://t.me/ChinaEduLinkAgency"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-gray-700 hover:text-blue-500"
+    >
+      Telegram
+    </a>
+  </div>
+</div> {/* ✅ This was missing! */}
+</div>
                     </div>
                   </div>
                 </div>
@@ -563,6 +644,7 @@ const handleSubmit = async (e) => {
             </div>
           </div>
         </div>
+        
       </section>
 
       {/* Contact Section */}
@@ -730,19 +812,57 @@ const handleSubmit = async (e) => {
             <div>
               <h4 className="font-semibold text-lg mb-4">Contact Info</h4>
               <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <MapPin className="h-5 w-5 text-blue-400 flex-shrink-0" />
-                  <span className="text-gray-300">Huaian, Jiangsu, China</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Mail className="h-5 w-5 text-blue-400 flex-shrink-0" />
-                  <a href="mailto:china.edulinkagency@gmail.com" className="text-gray-300 hover:text-blue-400">china.edulinkagency@gmail.com</a>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Phone className="h-5 w-5 text-blue-400 flex-shrink-0" />
-                  <a href="tel:+8618662953550" className="text-gray-300 hover:text-blue-400">+86 186 62 953550</a>
-                </div>
-              </div>
+  <div className="flex items-center space-x-3">
+    <MapPin className="h-5 w-5 text-blue-400 flex-shrink-0" />
+    <span className="text-gray-300">Huaian, Jiangsu, China</span>
+  </div>
+  <div className="flex items-center space-x-3">
+    <Mail className="h-5 w-5 text-blue-400 flex-shrink-0" />
+    <a
+      href="mailto:china.edulinkagency@gmail.com"
+      className="text-gray-300 hover:text-blue-400"
+      title="china.edulinkagency@gmail.com"
+    >
+      Email Us
+    </a>
+  </div>
+  <div className="flex items-center space-x-3">
+    <Phone className="h-5 w-5 text-blue-400 flex-shrink-0" />
+    <a href="tel:+8618662953550" className="text-gray-300 hover:text-blue-400">
+      Call Us
+    </a>
+  </div>
+  <div className="flex items-center space-x-3">
+    <img
+      src="https://cdn-icons-png.flaticon.com/128/733/733585.png"
+      alt="WhatsApp"
+      className="h-5 w-5"
+    />
+    <a
+      href="https://wa.me/8618662953550"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-gray-300 hover:text-green-400"
+    >
+      WhatsApp
+    </a>
+  </div>
+  <div className="flex items-center space-x-3">
+    <img
+      src="https://telegram.org/img/t_logo.png"
+      alt="Telegram"
+      className="h-5 w-5"
+    />
+    <a
+      href="https://t.me/ChinaEduLinkAgency"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-gray-300 hover:text-blue-400"
+    >
+      Telegram
+    </a>
+  </div>
+</div>
             </div>
           </div>
           
