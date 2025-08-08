@@ -3,6 +3,7 @@ import { Menu, X, ChevronDown, Mail, Phone, MapPin, Star, Users, Globe, Graduati
 import emailjs from '@emailjs/browser';
 
 export default function Home() {
+  const [likes, setLikes] = useState(3108);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -227,8 +228,8 @@ const handleSubmit = async (e) => {
                     <Globe className="h-6 w-6 text-purple-600" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-gray-900">50+</div>
-                    <div className="text-sm text-gray-600">Countries</div>
+                    <div className="text-2xl font-bold text-gray-900">10+</div>
+                    <div className="text-sm text-gray-600">Provinces</div>
                   </div>
                 </div>
               </div>
@@ -275,7 +276,7 @@ const handleSubmit = async (e) => {
             <div className="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl">
               <Calendar className="h-12 w-12 text-green-600 mb-4" />
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Application Deadline</h3>
-              <p className="text-gray-700">March 31, 2024</p>
+              <p className="text-gray-700">September Intake May - July <br />March Intake November - January</p>
             </div>
 
             <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl">
@@ -692,12 +693,21 @@ const handleSubmit = async (e) => {
                 fostering international academic cooperation.
               </p>
               <div className="flex space-x-4">
-                <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
-                  <Heart className="h-5 w-5" />
-                </div>
-                <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
-                  <Mail className="h-5 w-5" />
-                </div>
+                <button
+  onClick={() => setLikes(likes + 1)}
+  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors cursor-pointer"
+  aria-label="Like"
+>
+  <Heart className="h-5 w-5 text-red-400" />
+</button>
+<span className="text-gray-300 ml-2">{likes}</span>
+                <a
+  href="mailto:china.edulinkagency@gmail.com"
+  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer"
+  aria-label="Email"
+>
+  <Mail className="h-5 w-5 text-blue-400" />
+</a>
               </div>
             </div>
             
