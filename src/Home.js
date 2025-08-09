@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Menu, X, Mail, Phone, MapPin, Star, Users, Globe, GraduationCap, FileText, Award, Calendar, Clock, CheckCircle, Heart, Quote } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
-import { supabase } from './supabaseClient';
 
 export default function Home() {
   const [likes, setLikes] = useState(3108);
@@ -662,16 +661,59 @@ const handleSubmit = async (e) => {
   ))}
 
   <button
-    type="submit"
-    onClick={(e) => {
-      e.preventDefault();
-      console.log('Files ready for upload:', files);
-      alert('Files submitted successfully!');
-    }}
-    className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700"
-  >
-    Submit Documents
-  </button>
+  type="submit"
+  onClick={async (e) => {
+    e.preventDefault();
+
+    if (!fullName || !email) {
+      alert('Please enter your full name and email');
+      return;
+    }
+
+    const fileArray = [];
+    for (const [label, file] of Object.entries(files)) {
+      const base64 = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result.split(',')[1]); // base64 only
+        reader.readAsDataURL(file);
+      });
+      fileArray.push({ name: file.name, content: base64 });
+    }
+
+    try {
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName,
+          email,
+          programType,
+          files: fileArray,
+        }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert('Documents uploaded successfully!');
+        setFiles({});
+        setFullName('');
+        setEmail('');
+        setUploadPassword('');
+        setUploadAccess(false);
+      } else {
+        alert('Upload failed: ' + data.error);
+      }
+    } catch (err) {
+      console.error('Upload error:', err);
+      alert('Network error. Please try again.');
+    }
+  }}
+  className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700"
+>
+  Submit Documents
+</button>
 </div>
 </> 
 
