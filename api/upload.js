@@ -16,8 +16,8 @@ export default async function handler(req, res) {
     auth: process.env.GITHUB_TOKEN,
   });
 
-  const owner = 'your-github-username';        // ← Replace with your GitHub username
-  const repo = 'scholarship-submissions';      // ← Replace with your private repo name
+  const owner = 'i-am-ayo';           // Your GitHub username
+  const repo = 'chinaedulink';        // Your repo name
   const branch = 'main';
 
   try {
