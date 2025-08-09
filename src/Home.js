@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, Mail, Phone, MapPin, Star, Users, Globe, GraduationCap, FileText, Award, Calendar, Clock, CheckCircle, Heart, Quote } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Menu, X, Mail, Phone, MapPin, Star, Users, Globe, GraduationCap, FileText, Award, Calendar, Clock, CheckCircle, Heart, Quote } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
+import { supabase } from './supabaseClient';
 
 export default function Home() {
   const [likes, setLikes] = useState(3108);
@@ -9,12 +10,19 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState('home');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     subject: '',
     message: ''
   });
+  const [uploadAccess, setUploadAccess] = useState(false);
+const [uploadPassword, setUploadPassword] = useState('');
+const [programType, setProgramType] = useState('Bachelors');
+const [fullName, setFullName] = useState('');
+const [email, setEmail] = useState('');
+const [files, setFiles] = useState({});
 
   useEffect(() => {
     const handleScroll = () => {
@@ -100,7 +108,8 @@ const handleSubmit = async (e) => {
     { id: 'eligibility', label: 'Eligibility & Requirements' },
     { id: 'documents', label: 'Application Documents' },
     { id: 'administrator', label: 'About the Administrator' },
-    { id: 'contact', label: 'Contact' }
+    { id: 'contact', label: 'Contact' },
+    { id: 'upload', label: 'Upload Documents' }
   ];
 
   return (
@@ -537,6 +546,138 @@ const handleSubmit = async (e) => {
           </div>
         </div>
       </section>
+
+      {/* Upload Section */}
+<section id="upload" className="py-24 bg-white">
+  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 className="text-4xl font-bold text-gray-900 mb-6 text-center">Secure Document Upload</h2>
+
+    {!uploadAccess ? (
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        if (uploadPassword === 'Scholar2025') setUploadAccess(true);
+        else alert('Incorrect password');
+      }} className="space-y-4">
+        <input
+          type="password"
+          value={uploadPassword}
+          onChange={(e) => setUploadPassword(e.target.value)}
+          className="w-full px-4 py-3 border border-gray-300 rounded-xl"
+          placeholder="Enter access code"
+          required
+        />
+        <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700">
+          Access Upload Form
+        </button>
+      </form>
+    ) : (
+      <>
+        {/* Program Selector */}
+        <div className="mb-6">
+          <label className="block text-sm font-semibold text-gray-700 mb-2">Program Type</label>
+          <select
+            value={programType}
+            onChange={(e) => setProgramType(e.target.value)}
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl"
+          >
+            <option value="Bachelors">Bachelor's</option>
+            <option value="Masters">Master's</option>
+          </select>
+        </div>
+
+       {/* Upload Form */}
+<div className="space-y-6">
+  <input
+    type="text"
+    value={fullName}
+    onChange={(e) => setFullName(e.target.value)}
+    className="w-full px-4 py-3 border border-gray-300 rounded-xl"
+    placeholder="Full Name"
+    required
+  />
+  <input
+    type="email"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+    className="w-full px-4 py-3 border border-gray-300 rounded-xl"
+    placeholder="Email Address"
+    required
+  />
+
+  {(programType === 'Bachelors' ? [
+    "Application Form",
+    "High School Diploma",
+    "Official Transcripts",
+    "Personal Statement",
+    "Two Recommendation Letters",
+    "Passport Copy",
+    "Recent Passport Photo",
+    "Language Proficiency Certificate",
+    "Medical Health Report"
+  ] : [
+    "Application Form",
+    "Bachelor’s Degree Certificate",
+    "Official Transcripts",
+    "Research Proposal",
+    "Two Academic Recommendation Letters",
+    "Detailed CV/Resume",
+    "Passport Copy",
+    "Recent Passport Photo",
+    "Language Proficiency Certificate",
+    "Medical Health Report"
+  ]).map((label, index) => (
+    <div key={index} className="space-y-2">
+      <label className="font-medium text-gray-700">{label} 📤</label>
+      <input
+        type="file"
+        accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+        required
+        onChange={(e) => {
+          const file = e.target.files[0];
+          if (!file) return;
+          const allowedTypes = [
+            'application/pdf',
+            'application/msword',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            'image/jpeg',
+            'image/png'
+          ];
+          if (!allowedTypes.includes(file.type)) {
+            alert(`Invalid file type for ${label}`);
+            return;
+          }
+          if (file.size > 10 * 1024 * 1024) {
+            alert(`File too large for ${label} (max 10MB)`);
+            return;
+          }
+          const extension = file.name.split('.').pop();
+          const renamedFile = new File([file], `${programType}_${fullName.replace(/\s+/g, '')}_${label.replace(/\s+/g, '')}.${extension}`, {
+            type: file.type
+          });
+          setFiles((prev) => ({ ...prev, [label]: renamedFile }));
+        }}
+        className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+      />
+    </div>
+  ))}
+
+  <button
+    type="submit"
+    onClick={(e) => {
+      e.preventDefault();
+      console.log('Files ready for upload:', files);
+      alert('Files submitted successfully!');
+    }}
+    className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700"
+  >
+    Submit Documents
+  </button>
+</div>
+</> 
+
+    )}
+  </div>
+</section>
 
       {/* About Administrator Section */}
       <section id="administrator" className="py-24 bg-gradient-to-br from-gray-50 to-gray-100">
