@@ -17,11 +17,11 @@ export default function Home() {
     message: ''
   });
   const [uploadAccess, setUploadAccess] = useState(false);
-const [uploadPassword, setUploadPassword] = useState('');
-const [programType, setProgramType] = useState('Bachelors');
-const [fullName, setFullName] = useState('');
-const [email, setEmail] = useState('');
-const [files, setFiles] = useState({});
+  const [uploadPassword, setUploadPassword] = useState('');
+  const [programType, setProgramType] = useState('Bachelors');
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [files, setFiles] = useState({});
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,49 +57,50 @@ const [files, setFiles] = useState({});
     setIsMenuOpen(false);
   };
 
-const handleInputChange = (e) => {
-  setFormData({
-    ...formData,
-    [e.target.name]: e.target.value
-  });
-};
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-
-  const templateParams = {
-    fullName: formData.fullName,
-    email: formData.email,
-    subject: formData.subject,
-    message: formData.message,
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
-  try {
-    await emailjs.send(
-      process.env.REACT_APP_EMAILJS_SERVICE_ID,
-      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-      templateParams,
-      process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-    );
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-    setFormSubmitted(true);
-    setFormData({
-      fullName: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
-  } catch (error) {
-    console.error('EmailJS Error:', error);
-    alert('Failed to send message. Please try again or contact us directly.');
-  } finally {
-    setIsSubmitting(false);
-  }
+    const templateParams = {
+      fullName: formData.fullName,
+      email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+    };
 
-  setTimeout(() => {
-    setFormSubmitted(false);
-  }, 5000);
-};
+    try {
+      await emailjs.send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+      );
+
+      setFormSubmitted(true);
+      setFormData({
+        fullName: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      alert('Failed to send message. Please try again or contact us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
+
+    setTimeout(() => {
+      setFormSubmitted(false);
+    }, 5000);
+  };
 
   const navigationItems = [
     { id: 'home', label: 'Home' },
@@ -172,133 +173,133 @@ const handleSubmit = async (e) => {
       </header>
 
       {/* Hero Section */}
-<section
-  id="home"
-  className="pt-20 min-h-screen flex items-center relative overflow-hidden"
->
-  {/* Background */}
-  <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100"></div>
-  <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3')] bg-cover bg-center opacity-10"></div>
+      <section
+        id="home"
+        className="pt-20 min-h-screen flex items-center relative overflow-hidden"
+      >
+        {/* Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100"></div>
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3')] bg-cover bg-center opacity-10"></div>
 
-  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center max-w-4xl mx-auto">
-      <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-        ChinaEduLink Agency:
-        <span className="block text-blue-600">Advancing Global Talent</span>
-      </h1>
-      <p className="text-xl md:text-2xl text-gray-600 mb-10">
-        A prestigious scholarship program supporting academic excellence and leadership potential in Huaian, Jiangsu, China.
-      </p>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+              ChinaEduLink Agency:
+              <span className="block text-blue-600">Advancing Global Talent</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-600 mb-10">
+              A prestigious scholarship program supporting academic excellence and leadership potential in Huaian, Jiangsu, China.
+            </p>
 
-      {/* Apply Now & Learn More */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
-        <button
-          onClick={() => scrollToSection('contact')}
-          className="bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
-        >
-          Apply Now
-        </button>
-        <button
-          onClick={() => scrollToSection('details')}
-          className="border border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-colors"
-        >
-          Learn More
-        </button>
-      </div>
+            {/* Apply Now & Learn More */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+              >
+                Apply Now
+              </button>
+              <button
+                onClick={() => scrollToSection('details')}
+                className="border border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-colors"
+              >
+                Learn More
+              </button>
+            </div>
 
-      {/* Contact Icons */}
-      <div className="flex flex-wrap justify-center gap-8 mt-8 text-gray-700">
-        {/* Email */}
-        <a
-          href="mailto:china.edulinkagency@gmail.com"
-          className="flex items-center space-x-2 hover:text-blue-600 transition-colors"
-        >
-          <Mail className="h-6 w-6" />
-          <span>Email</span>
-        </a>
+            {/* Contact Icons */}
+            <div className="flex flex-wrap justify-center gap-8 mt-8 text-gray-700">
+              {/* Email */}
+              <a
+                href="mailto:china.edulinkagency@gmail.com"
+                className="flex items-center space-x-2 hover:text-blue-600 transition-colors"
+              >
+                <Mail className="h-6 w-6" />
+                <span>Email</span>
+              </a>
 
-        {/* Call */}
-        <a
-          href="tel:+8618662953550"
-          className="flex items-center space-x-2 hover:text-green-600 transition-colors"
-        >
-          <Phone className="h-6 w-6" />
-          <span>Call</span>
-        </a>
+              {/* Call */}
+              <a
+                href="tel:+8618662953550"
+                className="flex items-center space-x-2 hover:text-green-600 transition-colors"
+              >
+                <Phone className="h-6 w-6" />
+                <span>Call</span>
+              </a>
 
-        {/* WhatsApp */}
-        <a
-          href="https://wa.me/8618662953550"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center space-x-2 hover:text-green-500 transition-colors"
-        >
-          <FaWhatsapp className="h-6 w-6" />
-          <span>WhatsApp</span>
-        </a>
+              {/* WhatsApp */}
+              <a
+                href="https://wa.me/8618662953550"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 hover:text-green-500 transition-colors"
+              >
+                <FaWhatsapp className="h-6 w-6" />
+                <span>WhatsApp</span>
+              </a>
 
-        {/* Telegram */}
-        <a
-          href="https://t.me/ChinaEduLinkAgency"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center space-x-2 hover:text-blue-500 transition-colors"
-        >
-          <FaTelegramPlane className="h-6 w-6" />
-          <span>Telegram</span>
-        </a>
-      </div>
-    </div>
-
-    {/* Stats Grid */}
-    <div className="grid grid-cols-2 gap-6 mt-20">
-      <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-white/50 shadow-lg">
-        <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-            <Star className="h-6 w-6 text-green-600" />
+              {/* Telegram */}
+              <a
+                href="https://t.me/ChinaEduLinkAgency"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 hover:text-blue-500 transition-colors"
+              >
+                <FaTelegramPlane className="h-6 w-6" />
+                <span>Telegram</span>
+              </a>
+            </div>
           </div>
-          <div>
-            <div className="text-2xl font-bold text-gray-900">95%</div>
-            <div className="text-sm text-gray-600">Success Rate</div>
+
+          {/* Stats Grid */}
+          <div className="grid grid-cols-2 gap-6 mt-20">
+            <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-white/50 shadow-lg">
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                  <Star className="h-6 w-6 text-green-600" />
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-gray-900">95%</div>
+                  <div className="text-sm text-gray-600">Success Rate</div>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-white/50 shadow-lg">
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                  <Users className="h-6 w-6 text-blue-600" />
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-gray-900">1,200+</div>
+                  <div className="text-sm text-gray-600">Scholars</div>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-white/50 shadow-lg">
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                  <Globe className="h-6 w-6 text-purple-600" />
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-gray-900">10+</div>
+                  <div className="text-sm text-gray-600">Provinces</div>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-white/50 shadow-lg">
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
+                  <Award className="h-6 w-6 text-orange-600" />
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-gray-900">15+</div>
+                  <div className="text-sm text-gray-600">Partner Universities</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-white/50 shadow-lg">
-        <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-            <Users className="h-6 w-6 text-blue-600" />
-          </div>
-          <div>
-            <div className="text-2xl font-bold text-gray-900">1,200+</div>
-            <div className="text-sm text-gray-600">Scholars</div>
-          </div>
-        </div>
-      </div>
-      <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-white/50 shadow-lg">
-        <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
-            <Globe className="h-6 w-6 text-purple-600" />
-          </div>
-          <div>
-            <div className="text-2xl font-bold text-gray-900">10+</div>
-            <div className="text-sm text-gray-600">Provinces</div>
-          </div>
-        </div>
-      </div>
-      <div className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-white/50 shadow-lg">
-        <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
-            <Award className="h-6 w-6 text-orange-600" />
-          </div>
-          <div>
-            <div className="text-2xl font-bold text-gray-900">15+</div>
-            <div className="text-sm text-gray-600">Partner Universities</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Scholarship Details Section */}
       <section id="details" className="py-24 bg-white">
@@ -337,43 +338,43 @@ const handleSubmit = async (e) => {
           </div>
 
           <div className="bg-gray-50 rounded-2xl p-8">
-  <h3 className="text-2xl font-semibold text-gray-900 mb-6">Important Dates</h3>
-  <div className="grid md:grid-cols-2 gap-8">
-    {/* September Intake */}
-    <div className="space-y-4 border rounded-xl p-6 bg-white shadow">
-      <h4 className="text-xl font-semibold text-gray-900">September Intake</h4>
-      <div className="flex items-center space-x-4">
-        <Clock className="h-6 w-6 text-blue-600" />
-        <p><span className="font-semibold">Application Deadline:</span> March</p>
-      </div>
-      <div className="flex items-center space-x-4">
-        <Mail className="h-6 w-6 text-green-600" />
-        <p><span className="font-semibold">Notification Date:</span> May</p>
-      </div>
-      <div className="flex items-center space-x-4">
-        <GraduationCap className="h-6 w-6 text-purple-600" />
-        <p><span className="font-semibold">Program Start:</span> September</p>
-      </div>
-    </div>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-6">Important Dates</h3>
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* September Intake */}
+              <div className="space-y-4 border rounded-xl p-6 bg-white shadow">
+                <h4 className="text-xl font-semibold text-gray-900">September Intake</h4>
+                <div className="flex items-center space-x-4">
+                  <Clock className="h-6 w-6 text-blue-600" />
+                  <p><span className="font-semibold">Application Deadline:</span> March</p>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <Mail className="h-6 w-6 text-green-600" />
+                  <p><span className="font-semibold">Notification Date:</span> May</p>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <GraduationCap className="h-6 w-6 text-purple-600" />
+                  <p><span className="font-semibold">Program Start:</span> September</p>
+                </div>
+              </div>
 
-    {/* March Intake */}
-    <div className="space-y-4 border rounded-xl p-6 bg-white shadow">
-      <h4 className="text-xl font-semibold text-gray-900">March Intake</h4>
-      <div className="flex items-center space-x-4">
-        <Clock className="h-6 w-6 text-blue-600" />
-        <p><span className="font-semibold">Application Deadline:</span> September</p>
-      </div>
-      <div className="flex items-center space-x-4">
-        <Mail className="h-6 w-6 text-green-600" />
-        <p><span className="font-semibold">Notification Date:</span> December</p>
-      </div>
-      <div className="flex items-center space-x-4">
-        <GraduationCap className="h-6 w-6 text-purple-600" />
-        <p><span className="font-semibold">Program Start:</span> March</p>
-      </div>
-    </div>
-  </div>
-</div>
+              {/* March Intake */}
+              <div className="space-y-4 border rounded-xl p-6 bg-white shadow">
+                <h4 className="text-xl font-semibold text-gray-900">March Intake</h4>
+                <div className="flex items-center space-x-4">
+                  <Clock className="h-6 w-6 text-blue-600" />
+                  <p><span className="font-semibold">Application Deadline:</span> September</p>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <Mail className="h-6 w-6 text-green-600" />
+                  <p><span className="font-semibold">Notification Date:</span> December</p>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <GraduationCap className="h-6 w-6 text-purple-600" />
+                  <p><span className="font-semibold">Program Start:</span> March</p>
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
       </section>
@@ -547,179 +548,192 @@ const handleSubmit = async (e) => {
       </section>
 
       {/* Upload Section */}
-<section id="upload" className="py-24 bg-white">
-  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 className="text-4xl font-bold text-gray-900 mb-6 text-center">Secure Document Upload</h2>
+      <section id="upload" className="py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-gray-900 mb-6 text-center">Secure Document Upload</h2>
 
-    {!uploadAccess ? (
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        if (uploadPassword === 'Scholar2025') setUploadAccess(true);
-        else alert('Incorrect password');
-      }} className="space-y-4">
-        <input
-          type="password"
-          value={uploadPassword}
-          onChange={(e) => setUploadPassword(e.target.value)}
-          className="w-full px-4 py-3 border border-gray-300 rounded-xl"
-          placeholder="Enter access code"
-          required
-        />
-        <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700">
-          Access Upload Form
-        </button>
-      </form>
-    ) : (
-      <>
-        {/* Program Selector */}
-        <div className="mb-6">
-          <label className="block text-sm font-semibold text-gray-700 mb-2">Program Type</label>
-          <select
-            value={programType}
-            onChange={(e) => setProgramType(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-xl"
-          >
-            <option value="Bachelors">Bachelor's</option>
-            <option value="Masters">Master's</option>
-          </select>
+          {!uploadAccess ? (
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              if (uploadPassword === 'Scholar2025') setUploadAccess(true);
+              else alert('Incorrect password');
+            }} className="space-y-4">
+              <input
+                type="password"
+                value={uploadPassword}
+                onChange={(e) => setUploadPassword(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl"
+                placeholder="Enter access code"
+                required
+              />
+              <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700">
+                Access Upload Form
+              </button>
+            </form>
+          ) : (
+            <>
+              {/* Program Selector */}
+              <div className="mb-6">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Program Type</label>
+                <select
+                  value={programType}
+                  onChange={(e) => setProgramType(e.target.value)}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl"
+                >
+                  <option value="Bachelors">Bachelor's</option>
+                  <option value="Masters">Master's</option>
+                </select>
+              </div>
+
+              {/* Upload Form */}
+              <div className="space-y-6">
+                <input
+                  type="text"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl"
+                  placeholder="Full Name"
+                  required
+                />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl"
+                  placeholder="Email Address"
+                  required
+                />
+
+                {(programType === 'Bachelors' ? [
+                  "Application Form",
+                  "High School Diploma",
+                  "Official Transcripts",
+                  "Personal Statement",
+                  "Two Recommendation Letters",
+                  "Passport Copy",
+                  "Recent Passport Photo",
+                  "Language Proficiency Certificate",
+                  "Medical Health Report"
+                ] : [
+                  "Application Form",
+                  "Bachelor’s Degree Certificate",
+                  "Official Transcripts",
+                  "Research Proposal",
+                  "Two Academic Recommendation Letters",
+                  "Detailed CV/Resume",
+                  "Passport Copy",
+                  "Recent Passport Photo",
+                  "Language Proficiency Certificate",
+                  "Medical Health Report"
+                ]).map((label, index) => (
+                  <div key={index} className="space-y-2">
+                    <label className="font-medium text-gray-700">{label} 📤</label>
+                    <input
+                      type="file"
+                      accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                      required
+                      onChange={(e) => {
+                        const file = e.target.files[0];
+                        if (!file) return;
+                        const allowedTypes = [
+                          'application/pdf',
+                          'application/msword',
+                          'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                          'image/jpeg',
+                          'image/png'
+                        ];
+                        if (!allowedTypes.includes(file.type)) {
+                          alert(`Invalid file type for ${label}`);
+                          return;
+                        }
+                        if (file.size > 10 * 1024 * 1024) {
+                          alert(`File too large for ${label} (max 10MB)`);
+                          return;
+                        }
+                        const extension = file.name.split('.').pop();
+                        const renamedFile = new File([file], `${programType}_${fullName.replace(/\s+/g, '')}_${label.replace(/\s+/g, '')}.${extension}`, {
+                          type: file.type
+                        });
+                        setFiles((prev) => ({ ...prev, [label]: renamedFile }));
+                      }}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                    />
+                  </div>
+                ))}
+
+                <button
+                  type="submit"
+                  onClick={async (e) => {
+                    e.preventDefault();
+
+                    if (!fullName || !email || Object.keys(files).length === 0) {
+                      alert('Please fill in all fields and upload required files.');
+                      return;
+                    }
+
+                    setIsSubmitting(true);
+
+                    try {
+                      // Prepare attachments as base64 array for EmailJS
+                      const attachments = await Promise.all(
+                        Object.entries(files).map(async ([label, file]) => {
+                          const base64 = await new Promise((resolve) => {
+                            const reader = new FileReader();
+                            reader.onload = () => resolve(reader.result.split(',')[1]); // Base64 only
+                            reader.readAsDataURL(file);
+                          });
+                          return {
+                            name: file.name,
+                            data: base64,
+                            type: file.type,
+                          };
+                        })
+                      );
+
+                      const templateParams = {
+                        fullName,
+                        email,
+                        programType,
+                        message: `New ${programType} application from ${fullName}. Files attached.`, // Optional body
+                        attachments, // EmailJS will handle this as array of attachments
+                      };
+
+                      await emailjs.send(
+                        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+                        process.env.REACT_APP_EMAILJS_TEMPLATE_ID, // Use a template that supports attachments
+                        templateParams,
+                        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+                      );
+
+                      alert('Documents uploaded successfully! Check your email for confirmation.');
+                      setFiles({});
+                      setFullName('');
+                      setEmail('');
+                      setUploadPassword('');
+                      setUploadAccess(false);
+                    } catch (err) {
+                      console.error('Upload error:', err);
+                      let errorMessage = 'Upload failed. Please try again or contact us directly.';
+                      if (err.text) {
+                        errorMessage += ` Details: ${err.text}`; // EmailJS-specific error
+                      } else if (err.message.includes('size')) {
+                        errorMessage = 'Files too large (max 10MB total). Compress and retry.';
+                      }
+                      alert(errorMessage);
+                    } finally {
+                      setIsSubmitting(false);
+                    }
+                  }}
+                  disabled={isSubmitting}
+                  className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 disabled:opacity-50"
+                >
+                  {isSubmitting ? 'Uploading...' : 'Submit Documents'}
+                </button>
+              </div>
+            </>
+          )}
         </div>
-
-       {/* Upload Form */}
-<div className="space-y-6">
-  <input
-    type="text"
-    value={fullName}
-    onChange={(e) => setFullName(e.target.value)}
-    className="w-full px-4 py-3 border border-gray-300 rounded-xl"
-    placeholder="Full Name"
-    required
-  />
-  <input
-    type="email"
-    value={email}
-    onChange={(e) => setEmail(e.target.value)}
-    className="w-full px-4 py-3 border border-gray-300 rounded-xl"
-    placeholder="Email Address"
-    required
-  />
-
-  {(programType === 'Bachelors' ? [
-    "Application Form",
-    "High School Diploma",
-    "Official Transcripts",
-    "Personal Statement",
-    "Two Recommendation Letters",
-    "Passport Copy",
-    "Recent Passport Photo",
-    "Language Proficiency Certificate",
-    "Medical Health Report"
-  ] : [
-    "Application Form",
-    "Bachelor’s Degree Certificate",
-    "Official Transcripts",
-    "Research Proposal",
-    "Two Academic Recommendation Letters",
-    "Detailed CV/Resume",
-    "Passport Copy",
-    "Recent Passport Photo",
-    "Language Proficiency Certificate",
-    "Medical Health Report"
-  ]).map((label, index) => (
-    <div key={index} className="space-y-2">
-      <label className="font-medium text-gray-700">{label} 📤</label>
-      <input
-        type="file"
-        accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
-        required
-        onChange={(e) => {
-          const file = e.target.files[0];
-          if (!file) return;
-          const allowedTypes = [
-            'application/pdf',
-            'application/msword',
-            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-            'image/jpeg',
-            'image/png'
-          ];
-          if (!allowedTypes.includes(file.type)) {
-            alert(`Invalid file type for ${label}`);
-            return;
-          }
-          if (file.size > 10 * 1024 * 1024) {
-            alert(`File too large for ${label} (max 10MB)`);
-            return;
-          }
-          const extension = file.name.split('.').pop();
-          const renamedFile = new File([file], `${programType}_${fullName.replace(/\s+/g, '')}_${label.replace(/\s+/g, '')}.${extension}`, {
-            type: file.type
-          });
-          setFiles((prev) => ({ ...prev, [label]: renamedFile }));
-        }}
-        className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-      />
-    </div>
-  ))}
-
-  <button
-  type="submit"
-  onClick={async (e) => {
-    e.preventDefault();
-
-    if (!fullName || !email) {
-      alert('Please enter your full name and email');
-      return;
-    }
-
-    const fileArray = [];
-    for (const [label, file] of Object.entries(files)) {
-      const base64 = await new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result.split(',')[1]); // base64 only
-        reader.readAsDataURL(file);
-      });
-      fileArray.push({ name: file.name, content: base64 });
-    }
-
-    try {
-      const response = await fetch('/api/upload', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          fullName,
-          email,
-          programType,
-          files: fileArray,
-        }),
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        alert('Documents uploaded successfully!');
-        setFiles({});
-        setFullName('');
-        setEmail('');
-        setUploadPassword('');
-        setUploadAccess(false);
-      } else {
-        alert('Upload failed: ' + data.error);
-      }
-    } catch (err) {
-      console.error('Upload error:', err);
-      alert('Network error. Please try again.');
-    }
-  }}
-  className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700"
->
-  Submit Documents
-</button>
-</div>
-</> 
-
-    )}
-  </div>
-</section>
+      </section>
 
       {/* About Administrator Section */}
       <section id="administrator" className="py-24 bg-gradient-to-br from-gray-50 to-gray-100">
@@ -736,13 +750,12 @@ const handleSubmit = async (e) => {
               <div className="p-12">
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
                   <div className="w-32 h-32 rounded-full overflow-hidden flex-shrink-0 shadow-lg">
-  <img
-    src="/profile.jpg"
-    alt="Profile"
-    className="w-full h-full object-cover"
-  />
-</div>
-
+                    <img
+                      src="/profile.jpg"
+                      alt="Profile"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   
                   <div className="flex-1 space-y-6 text-center md:text-left">
                     <div>
@@ -764,70 +777,61 @@ const handleSubmit = async (e) => {
                     </div>
 
                     <div className="space-y-4">
-  <p className="text-gray-700 leading-relaxed">
-    As the founder and administrator of ChinaEduLink Agency, I am committed to transparency, 
-    academic excellence, and fostering international educational cooperation. With over 15 years 
-    of experience in international education, I have dedicated my career to bridging cultural 
-    and academic gaps between nations.
-  </p>
+                      <p className="text-gray-700 leading-relaxed">
+                        As the founder and administrator of ChinaEduLink Agency, I am committed to transparency, 
+                        academic excellence, and fostering international educational cooperation. With over 15 years 
+                        of experience in international education, I have dedicated my career to bridging cultural 
+                        and academic gaps between nations.
+                      </p>
 
-  <div className="space-y-4">
-  <p className="text-gray-700 leading-relaxed">
-    As the founder and administrator of ChinaEduLink Agency, I am committed to transparency, 
-    academic excellence, and fostering international educational cooperation. With over 15 years 
-    of experience in international education, I have dedicated my career to bridging cultural 
-    and academic gaps between nations.
-  </p>
-
- <div className="flex flex-col sm:flex-row gap-4">
-  <div className="flex items-center space-x-3">
-    <Mail className="h-5 w-5 text-blue-600" />
-    <a
-      href="mailto:china.edulinkagency@gmail.com"
-      className="text-gray-700 hover:text-blue-600"
-      title="china.edulinkagency@gmail.com"
-    >
-      Email Us
-    </a>
-  </div>
-  <div className="flex items-center space-x-3">
-    <Phone className="h-5 w-5 text-green-600" />
-    <a href="tel:+8618662953550" className="text-gray-700 hover:text-green-600">
-      Call Us
-    </a>
-  </div>
-  <div className="flex items-center space-x-3">
-    <img
-      src="https://cdn-icons-png.flaticon.com/128/733/733585.png"
-      alt="WhatsApp"
-      className="h-5 w-5"
-    />
-    <a
-      href="https://wa.me/8618662953550"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-gray-700 hover:text-green-500"
-    >
-      WhatsApp
-    </a>
-  </div>
-  <div className="flex items-center space-x-3">
-    <img
-      src="https://telegram.org/img/t_logo.png"
-      alt="Telegram"
-      className="h-5 w-5"
-    />
-    <a
-      href="https://t.me/ChinaEduLinkAgency"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-gray-700 hover:text-blue-500"
-    >
-      Telegram
-    </a>
-  </div>
-</div> {/* ✅ This was missing! */}
-</div>
+                      <div className="flex flex-col sm:flex-row gap-4">
+                        <div className="flex items-center space-x-3">
+                          <Mail className="h-5 w-5 text-blue-600" />
+                          <a
+                            href="mailto:china.edulinkagency@gmail.com"
+                            className="text-gray-700 hover:text-blue-600"
+                            title="china.edulinkagency@gmail.com"
+                          >
+                            Email Us
+                          </a>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <Phone className="h-5 w-5 text-green-600" />
+                          <a href="tel:+8618662953550" className="text-gray-700 hover:text-green-600">
+                            Call Us
+                          </a>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <img
+                            src="https://cdn-icons-png.flaticon.com/128/733/733585.png"
+                            alt="WhatsApp"
+                            className="h-5 w-5"
+                          />
+                          <a
+                            href="https://wa.me/8618662953550"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-700 hover:text-green-500"
+                          >
+                            WhatsApp
+                          </a>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <img
+                            src="https://telegram.org/img/t_logo.png"
+                            alt="Telegram"
+                            className="h-5 w-5"
+                          />
+                          <a
+                            href="https://t.me/ChinaEduLinkAgency"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-700 hover:text-blue-500"
+                          >
+                            Telegram
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -835,7 +839,6 @@ const handleSubmit = async (e) => {
             </div>
           </div>
         </div>
-        
       </section>
 
       {/* Contact Section */}
@@ -967,20 +970,20 @@ const handleSubmit = async (e) => {
               </p>
               <div className="flex space-x-4">
                 <button
-  onClick={() => setLikes(likes + 1)}
-  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors cursor-pointer"
-  aria-label="Like"
->
-  <Heart className="h-5 w-5 text-red-400" />
-</button>
-<span className="text-gray-300 ml-2">{likes}</span>
+                  onClick={() => setLikes(likes + 1)}
+                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors cursor-pointer"
+                  aria-label="Like"
+                >
+                  <Heart className="h-5 w-5 text-red-400" />
+                </button>
+                <span className="text-gray-300 ml-2">{likes}</span>
                 <a
-  href="mailto:china.edulinkagency@gmail.com"
-  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer"
-  aria-label="Email"
->
-  <Mail className="h-5 w-5 text-blue-400" />
-</a>
+                  href="mailto:china.edulinkagency@gmail.com"
+                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer"
+                  aria-label="Email"
+                >
+                  <Mail className="h-5 w-5 text-blue-400" />
+                </a>
               </div>
             </div>
             
@@ -1003,57 +1006,57 @@ const handleSubmit = async (e) => {
             <div>
               <h4 className="font-semibold text-lg mb-4">Contact Info</h4>
               <div className="space-y-3">
-  <div className="flex items-center space-x-3">
-    <MapPin className="h-5 w-5 text-blue-400 flex-shrink-0" />
-    <span className="text-gray-300">Huaian, Jiangsu, China</span>
-  </div>
-  <div className="flex items-center space-x-3">
-    <Mail className="h-5 w-5 text-blue-400 flex-shrink-0" />
-    <a
-      href="mailto:china.edulinkagency@gmail.com"
-      className="text-gray-300 hover:text-blue-400"
-      title="china.edulinkagency@gmail.com"
-    >
-      Email Us
-    </a>
-  </div>
-  <div className="flex items-center space-x-3">
-    <Phone className="h-5 w-5 text-blue-400 flex-shrink-0" />
-    <a href="tel:+8618662953550" className="text-gray-300 hover:text-blue-400">
-      Call Us
-    </a>
-  </div>
-  <div className="flex items-center space-x-3">
-    <img
-      src="https://cdn-icons-png.flaticon.com/128/733/733585.png"
-      alt="WhatsApp"
-      className="h-5 w-5"
-    />
-    <a
-      href="https://wa.me/8618662953550"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-gray-300 hover:text-green-400"
-    >
-      WhatsApp
-    </a>
-  </div>
-  <div className="flex items-center space-x-3">
-    <img
-      src="https://telegram.org/img/t_logo.png"
-      alt="Telegram"
-      className="h-5 w-5"
-    />
-    <a
-      href="https://t.me/ChinaEduLinkAgency"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-gray-300 hover:text-blue-400"
-    >
-      Telegram
-    </a>
-  </div>
-</div>
+                <div className="flex items-center space-x-3">
+                  <MapPin className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                  <span className="text-gray-300">Huaian, Jiangsu, China</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Mail className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                  <a
+                    href="mailto:china.edulinkagency@gmail.com"
+                    className="text-gray-300 hover:text-blue-400"
+                    title="china.edulinkagency@gmail.com"
+                  >
+                    Email Us
+                  </a>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Phone className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                  <a href="tel:+8618662953550" className="text-gray-300 hover:text-blue-400">
+                    Call Us
+                  </a>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/128/733/733585.png"
+                    alt="WhatsApp"
+                    className="h-5 w-5"
+                  />
+                  <a
+                    href="https://wa.me/8618662953550"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-300 hover:text-green-400"
+                  >
+                    WhatsApp
+                  </a>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <img
+                    src="https://telegram.org/img/t_logo.png"
+                    alt="Telegram"
+                    className="h-5 w-5"
+                  />
+                  <a
+                    href="https://t.me/ChinaEduLinkAgency"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-300 hover:text-blue-400"
+                  >
+                    Telegram
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
           
